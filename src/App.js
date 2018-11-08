@@ -49,8 +49,8 @@ class App extends Component {
 
         <Route path="/" exact={true} render={(props) => <Home auth={this.state.isAuthenticated} {...props} logoutfunc={this.handleLogout.bind(this)} />} />
         <Route path="/blog" render={(props) => <Blog auth={this.state.isAuthenticated} {...props} logoutfunc={this.handleLogout.bind(this)} />} />
-        <PublicRoute auth={this.state.isAuthenticated} path="/login" component={Login} render={(props) => <Login {...props}  login={this.handleLogin.bind(this)}/>}/>
-        <PrivateRoute path="/introduction" render={(props) => <Introduction auth={this.state.isAuthenticated} {...props} logoutfunc={this.handleLogout.bind(this)} />} />
+        {/* <PublicRoute auth={this.state.isAuthenticated} path="/login" component={Login} render={(props) => <Login {...props}  login={this.handleLogin.bind(this)}/>}/> */}
+        {/* <PrivateRoute path="/introduction" render={(props) => <Introduction auth={this.state.isAuthenticated} {...props} logoutfunc={this.handleLogout.bind(this)} />} /> */}
         <Route path="*" component={NotFound} />
        
       </Switch>
