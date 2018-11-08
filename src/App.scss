@@ -1,0 +1,42 @@
+.display-block {
+  display: block !important;
+}
+
+.acaranim-open {
+  animation: acaanim 0.5s;
+  overflow: hidden;
+  animation-fill-mode: forwards;
+}
+
+.acaranim-close {
+  animation: acaanimR 0.5s;
+  overflow: hidden;
+  animation-fill-mode: forwards;
+  // animation-direction: reverse;
+}
+
+.display-none {
+  display: none;
+}
+
+@keyframes acaanim {
+  from {
+    height: 0;
+  }
+  to {
+    height: 200px;
+  }
+}
+
+@keyframes acaanimR {
+  from {
+    height: 200px;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
