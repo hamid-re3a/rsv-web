@@ -1,13 +1,12 @@
 
 import React, { Component } from 'react';
 import Template from '../../Template';
+
+
 class Home extends Component {
     render() {
-        const { auth: isAuthenticated } = this.props;
         return (
-            <Template auth={isAuthenticated} logoutfunc={this.props.logoutfunc.bind(this)}>
-
-
+            <Template>
                 <div className="container background-gray-lighter">
                     <div className="row margin-top-50">
                         <h2 className="animate fadeIn text-center margin-top-50">به رزروینا خوش آمدید</h2>

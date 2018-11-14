@@ -4,9 +4,7 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 
 class Template extends React.Component {
-    
     render() {
-        const { auth: isAuthenticated } = this.props;
         return (
             <div>
                 <div>

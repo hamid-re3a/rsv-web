@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import Template from '../../Template';
 import Article from './article';
+
+
 class Blog extends Component {
     componentWillMount() {
         let that = this;
@@ -31,9 +33,8 @@ class Blog extends Component {
     }
 
     render() {
-        const { auth: isAuthenticated } = this.props;
         return (
-            <Template auth={isAuthenticated} logoutfunc={this.props.logoutfunc.bind(this)}>
+            <Template>
                 <div className="container  margin-top-50">
 
                     <div className="row" style={{ paddingTop: '10px' }}>

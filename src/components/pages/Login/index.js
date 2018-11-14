@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../../redux/action';
-class Login extends Component {
+import { setUser } from '../../../redux/action';
 
+
+class Login extends Component {
     componentWillMount() {
         this.setState({
             username: '',
@@ -19,10 +20,9 @@ class Login extends Component {
             [name]: value
         });
     }
-
     submitForm(event) {
         event.preventDefault();
-        this.props.login({
+        this.props.setUser({
             username : this.state.username
         })
         this.props.history.push('/');
@@ -73,6 +73,6 @@ const mapStateToProps = (state) => {
     let { user } = state;
     return { user };
 }
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { setUser })(Login);
 
 

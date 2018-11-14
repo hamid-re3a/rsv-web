@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../redux/action';
+import { delUser } from '../redux/action';
 import {Link} from 'react-router-dom';
 
 class Header extends React.Component {
@@ -62,12 +62,10 @@ class Header extends React.Component {
             </div>;
 
     }
-
     logMeOut() {
-        this.props.logout();
-        this.props.logoutfunc();
-
+        this.props.delUser();
     }
+
     render() {
         return (<header className="header-desktop">
             <div className="section__content section__content--p30">
@@ -92,5 +90,5 @@ const mapStateToProps = (state) => {
     let { user } = state;
     return { user };
 }
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, { delUser })(Header);
 
