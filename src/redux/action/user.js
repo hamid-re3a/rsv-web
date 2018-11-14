@@ -1,11 +1,11 @@
-export var login = (user) => {
+export var setUser = (user) => {
     return {
             type : 'CHANGE_USER',
             user
         };
 }
 
-export var logout = () => {
+export var delUser = () => {
     return {
             type : 'DELETE_USER'
         };
