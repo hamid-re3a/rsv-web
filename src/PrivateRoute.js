@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTyps from 'prop-types';
-import {Redirect , Route} from 'react-router-dom';
+import {Redirect , Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class PrivateRoute extends Component {
     static propTypes = {
@@ -9,16 +10,20 @@ class PrivateRoute extends Component {
     };
 
     render(){
-        const { component : Component , auth : isAuthenticated , ...restProps } = this.props;
-        return <Route {...restProps} render={(props) => (
+        const { component : Component, ...restProps } = this.props;
+        const isAuthenticated = this.props.user.isAuthenticated;
+        return <Route {...restProps} render={(_props) => (
             isAuthenticated ? (
-                <Component {...props}/>
+                <Component {...restProps}  {..._props} />
             ) : (
-                <Redirect to={{pathname : '/login', state : {from :props.location}}}/>
+                <Redirect to={{pathname : '/login', state : {from: _props.location}}}/>
             )
         )} />
     }
 }
 
-
-export default PrivateRoute;
+const mapStateToProps = (state) => {
+    let { user } = state;
+    return { user };
+}
+export default withRouter(connect(mapStateToProps, {})(PrivateRoute));

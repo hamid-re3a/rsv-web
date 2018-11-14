@@ -17,31 +17,7 @@ import './styles/css/sb-admin-2.css';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuthenticated: true
-    }
-  }
-
-  componentWillReceiveProps() {
-    var username = JSON.parse(JSON.parse(localStorage['persist:root'])['user']).username;
-    console.log(username.length);
-    if (username != null && username.length > 0) {
-      this.setState({ isAuthenticated: true });
-    } else {
-      this.setState({ isAuthenticated: false })
-    }
-  }
-
-  handleLogout() {
-    this.setState({ isAuthenticated: false });
-  }
-
-  handleLogin() {
-    this.setState({ isAuthenticated: true });
-  }
-
+  
   render() {
 
     return (
