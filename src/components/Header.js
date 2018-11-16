@@ -1,94 +1,99 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { delUser } from '../redux/action';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class Header extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            showdropdown: false
-        };
-        this.toggle = this.toggle.bind(this);
-    }
-    toggle() {
-        this.setState({
-            showdropdown: !this.state.showdropdown
-        });
-    }
 
-    renderLogin() {
-        const showdropdownClass = this.state.showdropdown ? "show-dropdown" : "";
-        const { auth: isAuthenticated } = this.props;
-
-        if (!isAuthenticated)
-            return <Link to="/login"><button type="button" className="btn btn-success">ورود</button></Link>
-        else
-            return <div className="header-button">
-                <div className="account-wrap">
-                    <div className={"account-item clearfix js-item-menu " + showdropdownClass}>
-
-                        <div className="content hidden-sm ">
-                            <a className="js-acc-btn" onClick={this.toggle}>{this.props.user.username}</a>
-                        </div>
-                        <div className="account-dropdown js-dropdown">
-                            <div className="info clearfix">
-
-                                <div className="content">
-                                    <h5 className="name">
-                                        <a ></a>john doe
-                                </h5>
-                                    <span className="email">johndoe@example.com</span>
-                                </div>
-                            </div>
-                            <div className="account-dropdown__body">
-                                <div className="account-dropdown__item">
-                                    <i className="zmdi zmdi-account"></i>Account
-                            </div>
-                                <div className="account-dropdown__item">
-                                    <i className="zmdi zmdi-settings"></i>Setting
-                            </div>
-                                <div className="account-dropdown__item">
-                                    <i className="zmdi zmdi-money-box"></i>Billing
-                            </div>
-                            </div>
-                            <div className="account-dropdown__footer">
-                                <a onClick={this.logMeOut.bind(this)}>
-                                    <i className="zmdi zmdi-power"></i>Logout</a>
-                            </div>
-                        </div>
-                    </div>
+function HeaderContact() {
+    return (
+        <div id="pre_header" className="container">
+            <div className="row margin-top-10 visible-lg">
+                <div className="col-md-6">
+                    <p>
+                        <strong> تلفن تماس :</strong> &nbsp; 57-72-938-0936
+                    </p>
                 </div>
-            </div>;
+                <div className="col-md-6 text-right">
+                    <p>
+                        {/* <strong> ایمیل :</strong> info@reservina.ir  */}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
 
-    }
-    logMeOut() {
-        this.props.delUser();
-    }
+function HeaderTitle() {
+    return (
+        <div id="header" className="container">
+            <div className="row">
+                <div className="logo">
+                    <a href="/" title="">
+                        <img src="img/logo.png" alt="Logo" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    );
+}
 
-    render() {
-        return (<header className="header-desktop">
-            <div className="section__content section__content--p30">
-                <div className="container-fluid">
-                    <div className="header-wrap">
-                        <form className="form-header" action="" method="POST">
-                            <input className="au-input au-input--xl" type="text" name="search" placeholder="جستجو ..." />
-                            <button className="au-btn--submit" type="submit">
-                                <i className="zmdi zmdi-search"></i>
-                            </button>
-                        </form>
+function HeaderNav() {
+    return (
+        <div id="hornav" className="container no-padding">
+            <div className="row background-white">
+                <div className="col-md-12 no-padding">
+                    <div className="pull-right navigation-bar">
+                        <div className="input-group search">
+                            <input id="nav-input-search" type="text" className="form-control" placeholder="جستجوی آرایشگاه" />
+                            <span className="input-group-btn">
+                                <button id="nav-button-search" className="btn btn-default" type="button"><i className="fa fa-search"></i> </button>
+                            </span>
 
-                        {this.renderLogin()}
+                        </div>
+                        <ul id="hornavmenu" className="nav navbar-nav">
+                            <li>
+                                <Link to={`blog`} className="fa-pencil">&nbsp; وبلاگ </Link>
+                            </li>
+                            {/* <li className="visible-lg">
+                                               <a href="contact.html" className="fa-comment"> ارتباط با ما </a>
+                                           </li>
+                                           <li>
+                                               <a href="index.html" className="fa-th-list"> وبلاگ  صفحه اصلی </a>
+                                           </li> */}
+
+                            <li>
+                                <Link to={`/`} className="fa-home"> صفحه اصلی </Link>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
             </div>
-        </header>);
+        </div>
+    );
+}
+
+
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <HeaderContact />
+                <div className="primary-container-group">
+                    <div className="primary-container-background">
+                        <div className="primary-container"></div>
+                        <div className="clearfix" />
+                    </div>
+                    <div className="primary-container">
+                        <HeaderTitle />
+                        <HeaderNav />
+
+                        <div id="content">
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
-const mapStateToProps = (state) => {
-    let { user } = state;
-    return { user };
-}
-export default connect(mapStateToProps, { delUser })(Header);
-
+export default Header;
