@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import PrivateRoute from './PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 // import PublicRoute from './PublicRoute';
 import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
@@ -15,25 +15,19 @@ import './styles/css/nexus.css';
 import './styles/css/responsive.css';
 import './styles/css/sb-admin-2.css';
 
+
 class App extends Component {
-
-  
   render() {
-
     return (
       <Switch>
 
         <Route path="/" exact component={Home} />
         <Route path="/blog" component={Blog} />} />
-        {/* <PublicRoute auth={this.state.isAuthenticated} path="/login" component={Login} render={(props) => <Login {...props}  login={this.handleLogin.bind(this)}/>}/> */}
-        {/* <PrivateRoute path="/introduction" render={(props) => <Introduction auth={this.state.isAuthenticated} {...props} logoutfunc={this.handleLogout.bind(this)} />} /> */}
         <Route path="*" component={NotFound} />
        
       </Switch>
-      
     );
-
-
   }
 }
+
 export default App;
